@@ -1,0 +1,14 @@
+<h1 [ngStyle]="{'color': color}">One way from source</h1>
+{{sourceMessage}}
+
+<h1>Binding v2</h1>
+<p>Sum of numbers:</p>
+<input [(ngModel)]="number">
+<button (click)="btnOnClick()" class="btn btn-success" type="button">Add</button>
+<p>{{sum}}</p>
+
+<h1>Two way binding</h1>
+<p>Put the login:</p>
+<input [(ngModel)]="username" (ngModelChange)="valueChange()">
+<p>{{lblInfo}}</p>
+
