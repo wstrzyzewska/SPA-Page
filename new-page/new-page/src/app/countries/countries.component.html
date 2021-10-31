@@ -1,0 +1,79 @@
+<h1>{{myCountries}}</h1>
+
+<ul>
+    <li *ngFor="let country of countries_tab" class="myclass">   
+        {{country.name}} : {{country.area}} km <sup>2</sup>
+    </li>
+</ul>
+
+<h1>Countries Greater then 100 000</h1>
+
+<ul>
+    <li *ngFor="let country of countries_tab">
+
+        <div>
+            <span *ngIf="country.area > 100000; then condition1 else condition2">
+            </span>
+            <ng-template #condition1>
+                <div class="condition1">
+                    {{country.name}} : {{country.area}} km <sup>2</sup> large
+                </div>
+            </ng-template>
+            <ng-template #condition2>
+                <div class="condition2">
+                    {{country.name}} : {{country.area}} km <sup>2</sup> small
+                </div>
+            </ng-template>
+        </div>
+    </li>
+</ul>
+
+<table>
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Country Name</th>
+            <th scope="col">Area</th>
+        </tr>
+    </thead>
+    <tbody>
+        <<ng-container *ngFor="let country of countries_tab; index as i">
+            <span *ngIf="i%3 == 0; then color1"></span>
+            <span *ngIf="i%3 == 1; then color2"></span>
+            <span *ngIf="i%3 == 2; then color3"></span>
+
+            <ng-template #color1>
+                <tr [ngStyle]="{'background-color':'pink'}">
+                <td>{{i+1}}</td>
+                <th>{{country.name}}</th>
+                <th>{{country.area}}</th>
+            </tr>
+            </ng-template>
+            <ng-template #color2>
+                <tr [ngStyle]="{'background-color':'grey'}">
+                <td>{{i+1}}</td>
+                <th>{{country.name}}</th>
+                <th>{{country.area}}</th>
+            </tr>
+            </ng-template>
+            <ng-template #color3>
+                <tr [ngStyle]="{'background-color':'violet'}">
+                <td>{{i+1}}</td>
+                <th>{{country.name}}</th>
+                <th>{{country.area}}</th>
+            </tr>
+            </ng-template>
+
+        </ng-container>
+    </tbody>
+</table>
+
+<h2>Random colors</h2>
+
+<ul>
+    <li *ngFor="let country of countries_tab"
+        [ngStyle]="{'color': getRandomColor()}">
+        {{country.name}} : {{country.area}} km <sup>2</sup>
+    </li>
+</ul>
+
