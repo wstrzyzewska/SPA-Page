@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="card border-primary">
+        <div class="card-body">
+            <h5 class="card-title">Parent Component. Info to child</h5>
+
+            <p class="card-text">
+                <input [(ngModel)]="messageToChild" type="text">             
+           </p>
+
+           <app-child infoFromParent={{messageToChild}}></app-child>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card border-primary">
+        <div class="card-body">
+            <h5 class="card-title">Parent Component. Info from child</h5>
+
+            <p class="card-text">
+               {{messageFromChild}}        
+           </p>
+
+           <app-child-output (childMessage)="getMessage($event)"></app-child-output>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card border-primary">
+        <div class="card-body">
+            <h5 class="card-title">Two components communication</h5>
+
+            <div class="row">
+                <div class="col-6">
+                    <app-component1></app-component1>
+                </div>
+                
+                <div class="col-6">
+                    <app-component2></app-component2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
